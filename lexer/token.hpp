@@ -1,5 +1,5 @@
 #pragma one
-#include "TokenType.hpp"
+#include "tokenType.hpp"
 #include <string>
 class Token
 {
@@ -28,6 +28,5 @@ private:
     TokenType type_;
     std::string tokenStr_;
     int lineNo_;
-
 };
 
