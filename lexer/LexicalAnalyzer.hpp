@@ -84,13 +84,55 @@ LexicalAnalyzer::nextTokenStartStage(const char* codePtr,
     {
         lexerStage = LexerStage::InId;
         tokenStr += *codePtr;
-        nextTokenInIdStage(codePtr++,lexerStage,tokenType,tokenStr,lineNo);
+        codePtr++;
     }
     else if(isalnum(*codePtr))
     {
         lexerStage = LexerStage::InNumber;
         tokenStr += *codePtr;
-        nextTokenInNumberStage(odePtr++,lexerStage,tokenType,tokenStr,lineNo);
+        codePtr++
+    }
+    else if(isspace(*codePtr))
+    {
+        if(*codePtr == '\n')
+        {
+            lineNo++;
+        }
+    }
+    else
+    {
+        switch (*codePtr)
+        {
+        case '+':
+            lexerStage = LexerStage::Done;
+            tokenStr += *codePtr;
+            tokenType = TokenType::Plus;
+            codePtr++;
+            break;
+
+        case '-':
+            lexerStage = LexerStage::Done;
+            tokenStr += *codePtr;
+            tokenType = TokenType::;
+            codePtr++;
+            break;
+
+
+        case '+':
+            lexerStage = LexerStage::Done;
+            tokenStr += *codePtr;
+            tokenType = TokenType::Plus;
+            codePtr++;
+            break;
+
+
+
+
+
+        
+        default:
+            break;
+        }
     }
 
 }
